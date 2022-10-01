@@ -50,7 +50,7 @@ function insertInstance(ArticulosModel, res){
             success.Created = false
             Connection.destroy()
             console.log(err)
-            res.status(500).json(success)
+            res.status(500).json(success, err)
         }
     })
 
@@ -81,7 +81,7 @@ function updateInstance(ArticulosModel, res){
             success.Updated = false
             Connection.destroy()
             console.log(err)
-            res.status(500).json(success)
+            res.status(500).json(success, err)
         }
     })
 
@@ -107,7 +107,7 @@ export function deleteInstance(req, res){
             success.Deleted = false
             Connection.destroy()
             console.log(err)
-            res.status(500).json(success)
+            res.status(500).json(success, err)
         }
     })
 }
@@ -131,7 +131,7 @@ export function listInstances(req, res){
         }else{
             Connection.destroy()
             console.log(data)
-            res.status(500).json(data)
+            res.status(500).json(data, err)
         }
     })
 }
