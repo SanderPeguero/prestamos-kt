@@ -72,7 +72,7 @@ function updateInstance(ArticulosModel, res){
 
     Connection = ConnectionStart()
 
-    Connection.query("UPDATE Articulos SET descripcion=?, marca=?, existencia=? WHERE articuloId=?", values, (err, res) => {
+    Connection.query("UPDATE Articulos SET descripcion=?, marca=?, existencia=? WHERE articuloId=?", values, (err, result) => {
         if(!err){
             success.Updated = true
             Connection.destroy()
