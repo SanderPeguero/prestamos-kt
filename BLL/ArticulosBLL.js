@@ -14,7 +14,7 @@ export function saveInstance(req, res){
 
     const ArticulosModel = getInstanceArticulos(req.body)
 
-    if(ArticulosModel.articuloId == null || ArticulosModel == 0){
+    if(ArticulosModel.articuloId != null || ArticulosModel != 0){
         
         insertInstance(ArticulosModel, res)
 
