@@ -3,7 +3,7 @@ const ArticulosModel = {
     articuloId: 0,
     descripcion: "",
     marca: "",
-    existencia: 0.0
+    existencia: 0.00
 }
 
 export function getInstanceArticulos(row = null){
@@ -14,7 +14,7 @@ export function getInstanceArticulos(row = null){
     ArticulosModel.articuloId = row.articuloId || 0
     ArticulosModel.descripcion = row.descripcion || ""
     ArticulosModel.marca = row.marca || ""
-    ArticulosModel.existencia = row.descripcion || ""
+    ArticulosModel.existencia = row.existencia || ""
 
     return ArticulosModel
     
