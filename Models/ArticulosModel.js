@@ -1,4 +1,3 @@
-import CategoryModel from "./CategoryModel"
 
 const ArticulosModel = {
     articuloId: 0,
