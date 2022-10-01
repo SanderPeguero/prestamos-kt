@@ -151,7 +151,7 @@ export function findInstance(req, res){
             res.json(getInstanceArticulos(result[0]))
         }else{
             Connection.destroy()
-            res.status(500).json(result)
+            res.status(500).json(err)
         }
     })
 }
