@@ -146,6 +146,6 @@ export function findInstance(req, res){
 
     Connection.query(SqlQuery + "WHERE articuloId = ?", values, (err, result)=>{
         Connection.destroy()
-        res.json(getInstanceArticulos(res[0]))
+        res.json(getInstanceArticulos(result[0]))
     })
 }
