@@ -3,7 +3,7 @@ import { getInstanceArticulos } from "../Models/ArticulosModel.js"
 import { ConnectionStart } from "../DAL/Connection.js"
 
 let Connection = ConnectionStart()
-let SqlQuery = "SELECT articulosId, descripcion, marca, existencia FROM Articulos"
+let SqlQuery = "SELECT * FROM Articulos"
 
 
 //Metodos CRUD
