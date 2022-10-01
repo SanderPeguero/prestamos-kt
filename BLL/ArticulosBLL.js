@@ -127,7 +127,7 @@ export function listInstances(req, res){
                 data.push(Object.assign({}, getInstanceArticulos(fila)))
             }
             Connection.destroy()
-            req.json(data)
+            res.json(data)
         }else{
             Connection.destroy()
             console.log(data)
