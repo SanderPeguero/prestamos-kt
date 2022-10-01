@@ -2,7 +2,7 @@ import express from "express"
 import cors from 'cors'
 
 //importamos nuestro enrutador
-import ArticulosRouter from './Routes/ArticulosRoute'
+import ArticulosRouter from './Routes/ArticulosRoute.js'
 
 
 const app = express()
