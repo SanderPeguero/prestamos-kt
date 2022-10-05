@@ -10,10 +10,14 @@ const router = express.Router()
 
 //Create and Update
 router.put('/', saveInstance) 
+router.post('/', saveInstance)
+
 //Read
 router.get('/:id', findInstance) 
+
 //Delete
 router.delete('/:id', deleteInstance) 
+
 //List
 router.get('/', listInstances) 
 
