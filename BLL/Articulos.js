@@ -6,9 +6,11 @@ let SQLQuery = "SELECT articuloId, descripcion, marca, existencia FROM Articulos
 
 
 //Create
-export function Create(ArticulosModel, res){
+export function Create(req, res){
     
     try{
+        
+        const ArticulosModel = getInstanceArticulos(req.body)
 
         const values = [
 
