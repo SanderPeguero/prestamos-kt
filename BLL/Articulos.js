@@ -1,5 +1,5 @@
-import { getInstanceArticulos } from "../Models/ArticulosModel"
-import { ConnectionStart } from "../DAL/Connection"
+import { getInstanceArticulos } from "../Models/ArticulosModel.js"
+import { ConnectionStart } from "../DAL/Connection.js"
 
 let Connection = ConnectionStart()
 let SQLQuery = "SELECT articuloId, descripcion, marca, existencia FROM Articulos"
