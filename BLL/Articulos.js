@@ -164,7 +164,7 @@ export function Read(req, res){
 
                 }else{
 
-                    res.status(400).json(result[0], "Not Found in Database")
+                    res.status(400).json("Not Found in Database")
 
                 }
                 Connection.destroy()
