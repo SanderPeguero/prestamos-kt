@@ -9,7 +9,7 @@ let SQLQuery = "SELECT articuloId, descripcion, marca, existencia FROM Articulos
 export function Create(req, res){
     
     try{
-        
+
         const ArticulosModel = getInstanceArticulos(req.body)
 
         const values = [
@@ -27,7 +27,7 @@ export function Create(req, res){
 
         }
         
-        if(!ArticulosModel.descripcion & !ArticulosModel.marca & !ArticulosModel.existencia){
+        if(ArticulosModel.descripcion & ArticulosModel.marca & ArticulosModel.existencia){
            
             Connection = ConnectionStart()
 
