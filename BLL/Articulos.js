@@ -1,6 +1,5 @@
 import { getInstanceArticulos } from "../Models/ArticulosModel"
 import { ConnectionStart } from "../DAL/Connection"
-import res from "express/lib/response"
 
 let Connection = ConnectionStart()
 let SQLQuery = "SELECT articuloId, descripcion, marca, existencia FROM Articulos"
