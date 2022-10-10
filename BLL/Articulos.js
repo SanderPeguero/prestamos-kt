@@ -158,13 +158,13 @@ export function Read(req, res){
             
             if(!error){
                 
-                if(!result[0]){
+                if(result[0]){
                     
                     res.json(getInstanceArticulos(result[0]))
 
                 }else{
 
-                    res.status(400).json(result, "Not Found in Database")
+                    res.status(400).json(result[0], "Not Found in Database")
 
                 }
                 Connection.destroy()
