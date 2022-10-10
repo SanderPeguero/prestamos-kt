@@ -14,6 +14,7 @@ export function Create(req, res){
 
         const values = [
 
+            ArticulosModel.articuloId,
             ArticulosModel.descripcion,
             ArticulosModel.marca,
             ArticulosModel.existencia
@@ -25,6 +26,13 @@ export function Create(req, res){
             Created: false,
             Instance: null
 
+        }
+
+        if(ArticulosModel.articuloId){
+
+            res.status(400).json("If you know the id with you want to insert the entity try use the PUT method")
+            return 
+            
         }
         
         if(ArticulosModel.descripcion && ArticulosModel.marca && ArticulosModel.existencia){
