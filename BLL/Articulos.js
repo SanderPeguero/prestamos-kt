@@ -21,7 +21,7 @@ export function Create(ArticulosModel, res){
         const success = {
 
             Created: false,
-            Instance: values
+            Instance: null
 
         }
         
@@ -34,6 +34,7 @@ export function Create(ArticulosModel, res){
                 if(!error){
                 
                     success.Created = true
+                    success.Instance = values
                     Connection.destroy()
                     res.json(success)
                 
