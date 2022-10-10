@@ -7,176 +7,217 @@ let SQLQuery = "SELECT articuloId, descripcion, marca, existencia FROM Articulos
 
 //Create
 export function Create(req, ArticulosModel){
+    
+    try{
 
-    const values = [
+        const values = [
 
-        ArticulosModel.descripcion,
-        ArticulosModel.marca,
-        ArticulosModel.existencia
+            ArticulosModel.descripcion,
+            ArticulosModel.marca,
+            ArticulosModel.existencia
 
-    ]
+        ]
 
-    const success = {
+        const success = {
 
-        Created: false,
-        Instance: values
+            Created: false,
+            Instance: values
 
-    }
-
-    Connection = ConnectionStart()
-
-    Connection.query("INSERT INTO Articulos (descripcion, marca, existencia) VALUES (?,?,?)", values, (error, result) => {
-        
-        if(!error){
-        
-            success.Created = true
-            Connection.destroy()
-            res.json(success)
-        
-        }else{
-        
-            success.Created = false
-            Connection.destroy()
-            console.log(error)
-            res.status(500).json(success, error)
-        
         }
 
-    })
+        Connection = ConnectionStart()
+
+        Connection.query("INSERT INTO Articulos (descripcion, marca, existencia) VALUES (?,?,?)", values, (error, result) => {
+            
+            if(!error){
+            
+                success.Created = true
+                Connection.destroy()
+                res.json(success)
+            
+            }else{
+            
+                success.Created = false
+                Connection.destroy()
+                console.log(error)
+                res.status(500).json(success, error)
+            
+            }
+
+        })
+
+    }catch(error){
+
+        console.log(error)
+
+    }
 
 }
 
 //Update
 export function Update(ArticulosModel, res){
    
-    const values = [
-   
-        ArticulosModel.articuloId,
-        ArticulosModel.descripcion,
-        ArticulosModel.marca,
-        ArticulosModel.existencia
-   
-    ]
+    try{
 
-    const success = {
-   
-        Updated: false,
-        Instance: values
-   
-    }
+        const values = [
+    
+            ArticulosModel.articuloId,
+            ArticulosModel.descripcion,
+            ArticulosModel.marca,
+            ArticulosModel.existencia
+    
+        ]
 
-    Connection = ConnectionStart()
-
-    Connection.query("UPDATE Articulos SET descripcion=?, marca=?, existencia=? WHERE articuloId=?", values, (error, result) => {
-
-        if(!error){
-        
-            success.Updated = true
-            Connection.destroy()
-            res.json(success)
-        
-        }else{
-        
-            success.Updated = false
-            Connection.destroy()
-            console.log(error)
-            res.status(500).json(success, error)
-        
+        const success = {
+    
+            Updated: false,
+            Instance: values
+    
         }
 
-    })
+        Connection = ConnectionStart()
+
+        Connection.query("UPDATE Articulos SET descripcion=?, marca=?, existencia=? WHERE articuloId=?", values, (error, result) => {
+
+            if(!error){
+            
+                success.Updated = true
+                Connection.destroy()
+                res.json(success)
+            
+            }else{
+            
+                success.Updated = false
+                Connection.destroy()
+                console.log(error)
+                res.status(500).json(success, error)
+            
+            }
+
+        })
+
+   }catch(error){
+
+       console.log(error)
+
+   }
 
 }
 
 //Read
 export function ReadAll(req, res){
 
-    Connection = ConnectionStart()
+    try{
 
-    Connection.query(SQLQuery, (error, result) => {
-       
-        let data = []
+        
+        Connection = ConnectionStart()
 
-        if(!error){
-            
-            for(let s = 0; s < result.length; s++){
+        Connection.query(SQLQuery, (error, result) => {
+        
+            let data = []
+
+            if(!error){
                 
-                let fila = result[s];
-                data.push(Object.assign({}, getInstanceArticulos(fila)))
+                for(let s = 0; s < result.length; s++){
+                    
+                    let fila = result[s];
+                    data.push(Object.assign({}, getInstanceArticulos(fila)))
+
+                }
+
+                Connection.destroy()
+                res.json(data)
+
+            }else{
+
+                Connection.destroy()
+                console.log(data)
+                res.status(500).json(data, error)
 
             }
 
-            Connection.destroy()
-            res.json(data)
+        })
 
-        }else{
-
-            Connection.destroy()
-            console.log(data)
-            res.status(500).json(data, error)
-
-        }
-
-    })
+    }catch(error){
+        
+        console.log(error)
+        
+    }
 }
 
 export function Read(req, res){
+    try{
 
-    const { id } = req.params
-    const values = [id]
+    
+        const { id } = req.params
+        const values = [id]
 
-    Connection = ConnectionStart()
+        Connection = ConnectionStart()
 
-    Connection.query(SQLQuery + " WHERE articuloId = ?", values, (error, result) => {
+        Connection.query(SQLQuery + " WHERE articuloId = ?", values, (error, result) => {
+            
+            if(!error){
+
+                Connection.destroy()
+                res.json(getInstanceArticulos(result[0]))
+
+            }else{
+
+                Connection.destroy()
+                res.status(500).json(error)
+
+            }
+
+        })
+    
+    }catch(error){
         
-        if(!error){
-
-            Connection.destroy()
-            res.json(getInstanceArticulos(result[0]))
-
-        }else{
-
-            Connection.destroy()
-            res.status(500).json(error)
-
-        }
-
-    })
+        console.log(error)
+        
+    }
 }
 
 //Delete
 
 export function Delete(req, res){
     
-    const { id } = req.params
-    const values = [id]
+    try{
 
-    const success = {
+        
+        const { id } = req.params
+        const values = [id]
 
-        Deleted: false,
-        Instance: values
+        const success = {
 
-    }
+            Deleted: false,
+            Instance: values
 
-    Connection = ConnectionStart()
-
-    Connection.query("DELETE FROM Articulos WHERE articuloId = ?", values, (error, result) => {
-        
-        if(!error){
-        
-            success.Deleted = true
-            Connection.destroy()
-            res.json(success)
-        
-        }else{
-        
-            success.Deleted = false
-            Connection.destroy()
-            console.log(error)
-            res.status(500).json(success, error)
-        
         }
-    })
 
+        Connection = ConnectionStart()
+
+        Connection.query("DELETE FROM Articulos WHERE articuloId = ?", values, (error, result) => {
+            
+            if(!error){
+            
+                success.Deleted = true
+                Connection.destroy()
+                res.json(success)
+            
+            }else{
+            
+                success.Deleted = false
+                Connection.destroy()
+                console.log(error)
+                res.status(500).json(success, error)
+            
+            }
+        })
+    
+    }catch(error){
+        
+        console.log(error)
+        
+    }
 }
 
