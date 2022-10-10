@@ -6,7 +6,7 @@ let SQLQuery = "SELECT articuloId, descripcion, marca, existencia FROM Articulos
 
 
 //Create
-export function Create(req, ArticulosModel){
+export function Create(ArticulosModel, res){
     
     try{
 
