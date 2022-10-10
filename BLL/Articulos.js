@@ -154,7 +154,7 @@ export function Read(req, res){
 
         Connection = ConnectionStart()
 
-        Connection.query(SQLQuery + " WHERE articuloId = ?", values, (error, result) => {
+        Connection.query("SELECT * FROM Articulos WHERE articuloId = ?", values, (error, result) => {
             
             if(!error){
 
