@@ -25,7 +25,7 @@ export function Create(ArticulosModel, res){
 
         }
         
-        if(ArticulosModel.descripcion & ArticulosModel.marca & ArticulosModel.existencia){
+        if(!ArticulosModel.descripcion & !ArticulosModel.marca & !ArticulosModel.existencia){
            
             Connection = ConnectionStart()
 
