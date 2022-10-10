@@ -157,9 +157,17 @@ export function Read(req, res){
         Connection.query("SELECT * FROM Articulos WHERE articuloId = ?", values, (error, result) => {
             
             if(!error){
+                
+                if(result[0]){
+                    
+                    res.json(getInstanceArticulos(result[0]))
 
+                }else{
+
+                    res.status(400).json(result, "Not Found in Database")
+                    
+                }
                 Connection.destroy()
-                res.json(getInstanceArticulos(result[0]))
 
             }else{
 
