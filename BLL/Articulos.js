@@ -24,28 +24,37 @@ export function Create(ArticulosModel, res){
             Instance: values
 
         }
+        
+        if(ArticulosModel.descripcion & ArticulosModel.marca & ArticulosModel.existencia){
+           
+            Connection = ConnectionStart()
 
-        Connection = ConnectionStart()
+            Connection.query("INSERT INTO Articulos (descripcion, marca, existencia) VALUES (?,?,?)", values, (error, result) => {
+                
+                if(!error){
+                
+                    success.Created = true
+                    Connection.destroy()
+                    res.json(success)
+                
+                }else{
+                
+                    success.Created = false
+                    Connection.destroy()
+                    console.log(error)
+                    res.status(500).json(success, error)
+                
+                }
 
-        Connection.query("INSERT INTO Articulos (descripcion, marca, existencia) VALUES (?,?,?)", values, (error, result) => {
-            
-            if(!error){
-            
-                success.Created = true
-                Connection.destroy()
-                res.json(success)
-            
-            }else{
-            
-                success.Created = false
-                Connection.destroy()
-                console.log(error)
-                res.status(500).json(success, error)
-            
-            }
+            })
 
-        })
+        }else{
 
+            res.status(400).json("Can not Create With an Empty Instance")
+
+        }
+
+        
     }catch(error){
 
         console.log(error)
