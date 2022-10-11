@@ -78,10 +78,13 @@ export function Update(req, res){
    
     try{
 
+        const { id } = req.params
+
         const ArticulosModel = getInstanceArticulos(req.body)
 
         const values = [
-    
+
+            id,
             ArticulosModel.descripcion,
             ArticulosModel.marca,
             ArticulosModel.existencia
