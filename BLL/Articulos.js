@@ -234,7 +234,7 @@ export function Delete(req, res){
             
             if(!error){
 
-                if(result[0]){
+                if(!result[0]){
                     
                     success.Deleted = true
                     res.json(success, result[0])
