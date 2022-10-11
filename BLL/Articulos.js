@@ -226,9 +226,18 @@ export function Delete(req, res){
         Connection.query("DELETE FROM Articulos WHERE articuloId = ?", values, (error, result) => {
             
             if(!error){
-            
-                success.Deleted = true
-                res.json(success, result)
+
+                if(result[0]){
+                    
+                    success.Deleted = true
+                    res.json(success, result[0])
+
+                }else{
+
+                    res.status(400).json("Not Found in Database")
+
+                }
+
                 Connection.destroy()
             
             }else{
@@ -239,6 +248,7 @@ export function Delete(req, res){
                 Connection.destroy()
             
             }
+
         })
     
     }catch(error){
