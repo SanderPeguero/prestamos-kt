@@ -210,7 +210,6 @@ export function Read(req, res){
 export function Delete(req, res){
     
     try{
-
         
         const { id } = req.params
         const values = [id]
@@ -230,7 +229,7 @@ export function Delete(req, res){
             
                 success.Deleted = true
                 Connection.destroy()
-                res.json(success)
+                res.json(success, result)
             
             }else{
             
