@@ -78,9 +78,10 @@ export function Update(ArticulosModel, res){
    
     try{
 
+        const ArticulosModel = getInstanceArticulos(req.body)
+        
         const values = [
     
-            ArticulosModel.articuloId,
             ArticulosModel.descripcion,
             ArticulosModel.marca,
             ArticulosModel.existencia
