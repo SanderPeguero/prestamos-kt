@@ -74,12 +74,12 @@ export function Create(req, res){
 }
 
 //Update
-export function Update(ArticulosModel, res){
+export function Update(req, res){
    
     try{
 
         const ArticulosModel = getInstanceArticulos(req.body)
-        
+
         const values = [
     
             ArticulosModel.descripcion,
@@ -129,7 +129,6 @@ export function ReadAll(req, res){
 
     try{
 
-        
         Connection = ConnectionStart()
 
         Connection.query(SQLQuery, (error, result) => {
