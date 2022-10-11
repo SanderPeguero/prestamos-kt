@@ -14,7 +14,6 @@ export function Create(req, res){
 
         const values = [
 
-            ArticulosModel.articuloId,
             ArticulosModel.descripcion,
             ArticulosModel.marca,
             ArticulosModel.existencia
