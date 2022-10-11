@@ -84,7 +84,7 @@ export function Update(req, res){
 
         const values = [
 
-            id,
+            [id],
             ArticulosModel.descripcion,
             ArticulosModel.marca,
             ArticulosModel.existencia
