@@ -166,8 +166,8 @@ export function ReadAll(req, res){
 }
 
 export function Read(req, res){
+    
     try{
-
     
         const { id } = req.params
         const values = [id]
@@ -219,6 +219,13 @@ export function Delete(req, res){
             Deleted: false,
             Instance: values
 
+        }
+        
+        if(!values){
+
+            res.status(400).json("Can not Delete a null Instance")
+            return 
+            
         }
 
         Connection = ConnectionStart()
