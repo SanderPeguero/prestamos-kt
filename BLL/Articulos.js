@@ -45,15 +45,15 @@ export function Create(req, res){
                 
                     success.Created = true
                     success.Instance = values
-                    Connection.destroy()
                     res.json(success)
+                    Connection.destroy()
                 
                 }else{
                 
                     success.Created = false
-                    Connection.destroy()
                     console.log(error)
                     res.status(500).json(success, error)
+                    Connection.destroy()
                 
                 }
 
@@ -102,15 +102,15 @@ export function Update(ArticulosModel, res){
             if(!error){
             
                 success.Updated = true
-                Connection.destroy()
                 res.json(success)
-            
+                Connection.destroy()
+                
             }else{
             
                 success.Updated = false
-                Connection.destroy()
                 console.log(error)
                 res.status(500).json(success, error)
+                Connection.destroy()
             
             }
 
@@ -145,14 +145,14 @@ export function ReadAll(req, res){
 
                 }
 
-                Connection.destroy()
                 res.json(data)
+                Connection.destroy()
 
             }else{
 
-                Connection.destroy()
                 console.log(data)
                 res.status(500).json(data, error)
+                Connection.destroy()
 
             }
 
@@ -191,8 +191,8 @@ export function Read(req, res){
 
             }else{
 
-                Connection.destroy()
                 res.status(500).json(error)
+                Connection.destroy()
 
             }
 
@@ -228,15 +228,15 @@ export function Delete(req, res){
             if(!error){
             
                 success.Deleted = true
-                Connection.destroy()
                 res.json(success, result)
+                Connection.destroy()
             
             }else{
             
                 success.Deleted = false
-                Connection.destroy()
                 console.log(error)
                 res.status(500).json(success, error)
+                Connection.destroy()
             
             }
         })
