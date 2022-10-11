@@ -221,7 +221,7 @@ export function Delete(req, res){
 
         }
         
-        if(!values[0]){
+        if(!id){
 
             res.status(400).json("Can not Delete a null Instance")
             return 
